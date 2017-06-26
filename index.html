@@ -73,6 +73,11 @@
       margin-left: 300px;
       margin-top: -20px;
       transform: rotate(-20deg);
+      transition: all 0.5s ease-in-out;
+    }
+
+    #text:hover{
+      transform: rotate(-25deg);
     }
 
   </style>
@@ -80,7 +85,7 @@
 
 <body>
   <center><a id="title" onClick="colorPixels()">instant <span>ART</span></a>
-    <p id="text">Now with only 14 colors!</p>
+    <a onClick="draw('wheel')"><p id="text">Now with only 14 colors!</p></a>
 
   <div id="container"><canvas id="canvas" height="600px" width="600px"></canvas></div>
 
@@ -135,6 +140,89 @@
     }
     pixelSize = c.height/(Math.sqrt(sizes[pixelArrayCounter]));
     document.getElementById("sizeNumber").innerHTML = sizes[pixelArrayCounter];
+  }
+
+  function draw(code){
+    var x = 0;
+    var y = 0;
+    switch(code){
+      case "wheel":
+        code = "111111111111111111111111111111111111111111111111111111111111111111161111111111111517111111111114111811111111131111191111111112111A11111111111D1B1111111111111C1111111111111111111111111111111111111101111111111111111111111111111";
+        break;
+        
+      default:
+        break;
+    }
+
+    ctx.clearRect(0, 0, c.width, c.height);
+    var pixelSize = c.height/(Math.sqrt(code.length));
+    for(var i = 0; i < code.length; i++){
+      switch(code[i]){
+        case '0':
+          ctx.fillStyle = "#000000";
+          break;
+
+        case '1':
+          ctx.fillStyle = "#ffffff";
+          break;
+
+        case '2':
+          ctx.fillStyle = colors[0];
+          break;
+
+        case '3':
+          ctx.fillStyle = colors[1];
+          break;
+
+        case '4':
+          ctx.fillStyle = colors[2];
+          break;
+
+        case '5':
+          ctx.fillStyle = colors[3];
+          break;
+
+        case '6':
+          ctx.fillStyle = colors[4];
+          break;
+
+        case '7':
+          ctx.fillStyle = colors[5];
+          break;
+
+        case '8':
+          ctx.fillStyle = colors[6];
+          break;
+
+        case '9':
+          ctx.fillStyle = colors[7];
+          break;
+
+        case 'A':
+          ctx.fillStyle = colors[8];
+          break;
+
+        case 'B':
+          ctx.fillStyle = colors[9];
+          break;
+
+        case 'C':
+          ctx.fillStyle = colors[10];
+          break;
+
+        case 'D':
+          ctx.fillStyle = colors[11];
+          break;
+      }
+      ctx.fillRect(x,y,pixelSize,pixelSize);
+      if(x == c.width-pixelSize){
+        x = 0;
+        y += pixelSize;
+      }
+      else{
+        x += pixelSize;
+      }
+    }
   }
   
   </script>
