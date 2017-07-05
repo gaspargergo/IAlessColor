@@ -85,7 +85,7 @@
 
 <body>
   <center><a id="title" onClick="colorPixels()">instant <span>ART</span></a>
-    <a onClick="draw('wheel')"><p id="text">Now with just 14 colors!</p></a>
+    <a onClick="draw('wheel')"><p id="text">Now with just 12 colors!</p></a>
 
   <div id="container"><canvas id="canvas" height="600px" width="600px"></canvas></div>
 
@@ -112,7 +112,7 @@
   var sizes = [1,4,9,25,100,400,900,3600,10000,40000,90000,360000]; 
   var pixelArrayCounter = 4;
   var pixelSize = c.height/(Math.sqrt(sizes[pixelArrayCounter]));
-  var colors = ["#008e5b","#8cbb26","#f4e500","#fdc60b","#f18e1c","#ea621f","#e32322","#c4037d","#6d398b","#444e99","#2a71b0","#2a71b0","#ffffff","#000000"]
+  var colors = ["#008e5b","#8cbb26","#f4e500","#fdc60b","#f18e1c","#ea621f","#e32322","#c4037d","#6d398b","#444e99","#2a71b0","#0696bb"]
 
   function colorPixels(){
     var x = 0;
@@ -147,7 +147,21 @@
     var y = 0;
     switch(code){
       case "wheel":
-        code = "111111111111111111111111111111111111111111111111111111111111111111161111111111111517111111111114111811111111131111191111111112111A11111111111D1B1111111111111C1111111111111111111111111111111111111101111111111111111111111111111";
+        var random = Math.floor(Math.random() * 4);
+        switch(random){
+          case 0:
+            code = "111111111111111111111111111111111111111111111111111111111111111111161111111111111517111111111114111811111111131111191111111112111A11111111111D1B1111111111111C1111111111111111111111111111111111111111111111111111111111111111111";
+            break;
+          case 1:
+            code = "2233445566772233445566772233445566772233445566772233445566772233445566778899AABBCCDD8899AABBCCDD8899AABBCCDD8899AABBCCDD8899AABBCCDD8899AABBCCDD";
+            break;
+          case 2:
+            code = "23456789ABCD3456789ABCD2456789ABCD2356789ABCD2346789ABCD2345789ABCD2345689ABCD2345679ABCD2345678ABCD23456789BCD23456789ACD23456789ABD23456789ABC";
+            break;
+          case 3:
+            code = "28394A5B6C7D8394A5B6C7D2394A5B6C7D2894A5B6C7D2834A5B6C7D2839A5B6C7D283945B6C7D28394AB6C7D28394A56C7D28394A5BC7D28394A5B67D28394A5B6CD28394A5B6C7";
+            break;
+        }
         break;
         
       default:
